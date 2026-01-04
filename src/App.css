@@ -128,3 +128,276 @@ button {
 button:hover {
   background-color: #6b2389; /* Darker purple on hover */
 }
+/* General app container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9; /* subtle gray background */
+}
+
+/* Auth Card (Login / Signup) */
+.auth-card {
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 360px;
+  text-align: center;
+}
+
+/* Headings */
+.auth-card h3 {
+  margin-bottom: 20px;
+  color: #333333;
+  font-weight: 600;
+}
+
+/* Inputs */
+.auth-card input, .auth-card select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.auth-card input:focus, .auth-card select:focus {
+  border-color: #0073bb;
+  outline: none;
+}
+
+/* Primary buttons */
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0073bb;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-card button:hover {
+  background-color: #005fa3;
+}
+
+/* Toggle button */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #0073bb;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+/* Error messages */
+.auth-card p {
+  color: #d32f2f;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+/* Career grid */
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 30px;
+}
+
+/* CareerOption card */
+.career-grid > div {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: box-shadow 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.career-grid > div:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+}
+
+/* Images inside cards */
+.career-grid img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
+}
+/* Inputs */
+.auth-card input,
+.auth-card select {
+  width: 100%;
+  padding: 6px 10px;        /* smaller vertical padding */
+  margin: 8px 0 12px;       /* less margin between inputs */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  box-sizing: border-box;   /* ensure width includes padding */
+}
+
+.auth-card input:focus,
+.auth-card select:focus {
+  border-color: #0073bb;
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 115, 187, 0.3);
+}
+/* Career grid container */
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* responsive */
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+
+/* Career option card */
+.career-grid > div {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hover effect */
+.career-grid > div:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+}
+
+/* Images inside the card */
+.career-grid img {
+  width: 80px;      /* uniform size */
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Career name text */
+.career-grid div span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+/* Career grid container for 2 per row */
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* exactly 2 per row */
+  gap: 30px;
+  width: 90%;
+  max-width: 600px; /* keeps it centered and neat */
+  margin: 40px auto; /* center horizontally */
+}
+
+/* Career option card */
+.career-grid > div {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hover effect */
+.career-grid > div:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+}
+
+/* Image inside card */
+.career-grid img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Career name */
+.career-grid div span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+/* Remove default body margin and padding */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* light neutral background */
+}
+
+/* Career grid container */
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+  gap: 20px; /* spacing between cards */
+  width: 100%;
+  max-width: 500px; /* keeps grid compact */
+  margin: 20px auto; /* center horizontally with minimal top space */
+  padding: 0;
+}
+
+/* Career option card */
+.career-grid > div {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hover effect */
+.career-grid > div:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Image inside card */
+.career-grid img {
+  width: 80px; /* uniform size */
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+/* Career name text */
+.career-grid div span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+

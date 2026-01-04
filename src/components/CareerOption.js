@@ -1,28 +1,15 @@
-// src/components/CareerOption.js
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './CareerOption.css';
 
-const CareerOption = ({ name, imgSrc, details }) => {
+const CareerOption = ({ name, imgSrc, path }) => {
   return (
-    <div style={{ textAlign: 'center', margin: '10px' }}>
-      <Link to={name === 'Java' ? '/java-details' 
-       : name === 'Python' ? '/python-details'
-        : name === 'Embedded' ? '/embedded-details'
-         : name === 'HTML' ? '/html-details'
-          : name === 'CSS' ? '/css-details'
-           : name === 'JavaScript' ? '/javascript-details'
-           :name === 'MERN' ? '/mern-details'  // MERN routing
-            :name === 'MEAN' ? '/mean-details' // MEAN routing
-            :name === 'VLSI' ? '/vlsi-details'
-            :name === 'C' ? '/cpp-details' 
-
-        : `/career/${name.toLowerCase()}`}>
-        <img src={imgSrc} alt={name} style={{ width: '100px', height: '100px', margin: '10px' }} />
+    <div className="career-option">
+      {/* Link styled as card */}
+      <Link to={path} className="career-link">
+        <img src={imgSrc} alt={name} className="career-image" />
+        <h3 className="career-name">{name}</h3>
       </Link>
-      
-      <h4>{name}</h4>
-      <p style={{ margin: '5px 0' }}>{details}</p>
     </div>
   );
 };

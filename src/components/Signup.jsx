@@ -1,38 +1,35 @@
 import React, { useState } from 'react';
 
-const allowedInterests = [
-  "Java", "Python", "C", "VLSI", "Embedded",
-  "MERN", "MEAN", "HTML", "CSS", "JavaScript"
-];
-
-const Signup = ({ onSignupSuccess }) => {
+const Signup = ({ onSignup }) => {
   const [username, setUsername] = useState('');
   const [interest, setInterest] = useState('');
   const [error, setError] = useState('');
 
-  const handleSignup = (e) => {
+  const allowedInterests = [
+    "Java", "Python", "C", "VLSI", "Embedded",
+    "MERN", "MEAN", "HTML", "CSS", "JavaScript"
+  ];
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Username validation
     if (!/^[A-Za-z]{3,}$/.test(username)) {
-      setError("Username must contain only letters (min 3 characters)");
+      setError("Username must contain at least 3 letters only");
       return;
     }
 
-    // Interest validation
     if (!allowedInterests.includes(interest)) {
-      setError("Please select a valid interest from the list");
+      setError("Please select a valid interest");
       return;
     }
 
     setError('');
-    onSignupSuccess({ username, interest });
+    onSignup({ username, interest }); // Pass data to App
   };
 
   return (
-    <form onSubmit={handleSignup} style={{ marginBottom: '20px' }}>
+    <form onSubmit={handleSubmit}>
       <h3>Sign Up</h3>
-
       <label>
         Username:
         <input
@@ -43,7 +40,6 @@ const Signup = ({ onSignupSuccess }) => {
         />
       </label>
       <br />
-
       <label>
         Interest:
         <select
@@ -51,18 +47,14 @@ const Signup = ({ onSignupSuccess }) => {
           onChange={(e) => setInterest(e.target.value)}
           required
         >
-          <option value="">-- Select Interest --</option>
-          {allowedInterests.map((item) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
+          <option value="">--Select--</option>
+          {allowedInterests.map((i) => (
+            <option key={i} value={i}>{i}</option>
           ))}
         </select>
       </label>
       <br />
-
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <button type="submit">Sign Up</button>
     </form>
   );
