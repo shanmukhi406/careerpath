@@ -1,63 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const EmbeddedDetails = () => {
+  const [expandedFaq, setExpandedFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Embedded Systems</h2>
-      <p>Choosing Embedded Systems as a career option can be a rewarding decision for various reasons. Here are some key points that highlight why Embedded Systems is a popular choice for many engineers, along with the frameworks and tools commonly associated with it:</p>
-      <h2>Why Choose Embedded Systems as a Career Option?</h2>
-      <h3>Growing Industry Demand:</h3>
-      <p>The demand for embedded systems professionals continues to grow as more devices become "smart" and interconnected. Embedded systems are integral to various industries, including automotive, healthcare, consumer electronics, and IoT.</p>
-      <h3>Innovation and Creativity:</h3>
-      <p>Working in embedded systems allows engineers to innovate and create new technologies that improve everyday devices. Engineers can design products that enhance functionality and user experience.</p>
-      <h3>Diverse Career Opportunities:</h3>
-      <p>Embedded systems engineers can work in various roles, including firmware development, hardware design, systems integration, and application development across different sectors.</p>
-      <h3>Interdisciplinary Knowledge:</h3>
-      <p>The field of embedded systems combines knowledge of hardware and software, allowing professionals to gain expertise in various areas such as electronics, programming, and system design.</p>
-      <div>
-        <h2>Best YouTube Channels for Learning Embedded Systems</h2>
-        <ul>
-          <li>
-            <a href="https://www.youtube.com/c/ElectronicsNMore" target="_blank">Electronics N More</a>: Tutorials on embedded systems design, microcontrollers, and practical electronics projects.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/GreatScott" target="_blank">GreatScott!</a>: Comprehensive tutorials on electronics and embedded systems with a focus on practical applications.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/TechWithTim" target="_blank">Tech With Tim</a>: Covers programming and electronics topics, including embedded systems projects.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/MakerNerd" target="_blank">Maker Nerd</a>: Focuses on DIY electronics projects and embedded system tutorials, ideal for hobbyists and beginners.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/TheEngineeringMindset" target="_blank">The Engineering Mindset</a>: Provides insights into engineering concepts, including embedded systems and electronics.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/EmbeddedSystemsAcademy" target="_blank">Embedded Systems Academy</a>: Tutorials and courses focused on embedded systems design and programming.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/NPTELhrd" target="_blank">NPTEL</a>: Offers full course lectures on embedded systems and related subjects from Indian Institutes of Technology.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/Arduino" target="_blank">Arduino</a>: Official Arduino channel with tutorials, project ideas, and programming guides for embedded systems.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/ElectroBoom" target="_blank">ElectroBOOM</a>: Fun and informative videos that explore electronics and embedded systems concepts with humor.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/ProgrammingKnowledge" target="_blank">ProgrammingKnowledge</a>: Tutorials covering a range of programming topics, including embedded systems and microcontroller programming.
-          </li>
-        </ul>
+    <div className="details-container">
+      <div className="details-header">
+        <h1>Embedded Systems Career Path</h1>
+        <p>Where software meets hardware. Power the IoT revolution.</p>
       </div>
+
+      {/* Quick Stats */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>$100k+</h3>
+          <p>Avg. Salary</p>
+        </div>
+        <div className="stat-card">
+          <h3>Smart</h3>
+          <p>Devices</p>
+        </div>
+        <div className="stat-card">
+          <h3>IoT</h3>
+          <p>Future</p>
+        </div>
+      </div>
+
+      <h2>Learning Roadmap</h2>
+      <div className="roadmap-container">
+        <div className="roadmap-step">
+          <h4>Phase 1: C Programming & Electronics</h4>
+          <p>Bit manipulation, Pointers, Microprocessor architecture (8085/8086).</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 2: Microcontrollers</h4>
+          <p>Arduino, 8051, AVR, ARM Cortex, GPIO, interrupts, timers.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 3: RTOS & Protocols</h4>
+          <p>FreeRTOS, I2C, SPI, UART, CAN, IoT protocols (MQTT).</p>
+        </div>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div className="faq-section">
+        {[
+          { q: "Is Embedded Systems hard?", a: "It requires understanding both hardware and software, which can be challenging but exciting." },
+          { q: "Can I use Python for Embedded?", a: "Yes, MicroPython is popular, but C/C++ remains the industry standard for low-level control." },
+          { q: "What is an RTOS?", a: "A Real-Time Operating System ensures that tasks are processed within strict time constraints." }
+        ].map((item, index) => (
+          <div className="faq-item" key={index} onClick={() => toggleFaq(index)}>
+            <div className="faq-question">
+              {item.q}
+              <span>{expandedFaq === index ? '−' : '+'}</span>
+            </div>
+            {expandedFaq === index && <div className="faq-answer">{item.a}</div>}
+          </div>
+        ))}
+      </div>
+
+      <h2>Top Resources</h2>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        <li><a href="https://www.embedded.com/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>📡 Embedded.com</a></li>
+        <li><a href="https://www.arduino.cc/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>🤖 Arduino Home</a></li>
+      </ul>
     </div>
   );
 };

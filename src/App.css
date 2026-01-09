@@ -1,403 +1,515 @@
 /* src/App.css */
+/* EXCLUSIVE PREMIUM THEME */
 
-/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
-  background-color: white; /* Light background color for contrast */
-  padding-top: 150px;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+  min-height: 100vh;
 }
 
-/* Centered Heading */
-.centered-heading {
-  text-align: center;
-  margin: 20px 0;
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* Button Container */
-.button-container {
-  display: flex;
-  justify-content: center; /* Center the button horizontally */
-  align-items: center; /* Center the button vertically if the container has height */
-  width: 100%; /* Full width */
-  margin: 20px 0; /* Adjust margin as needed */
-}
-
-/* Button Styles */
-.choose-career-button {
-  width: 50%; /* Button width */
-  padding: 10px;
-  border: 2px solid #8328a7; /* Border color */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #8328a7; /* Button color */
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 0 auto; /* Center the button */
-  display: block; /* Make button block level */
-}
-
-.choose-career-button:hover {
-  background-color: #6e1d8b; /* Darker shade on hover */
-}
-
-/* Message Box Styles */
-.message {
-  width: 80%; /* Adjust the width to your preference */
-  max-width: 300px; /* Limit the maximum width */
-  margin: 0 auto; /* Center the message box */
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: #007bff; /* Blue color for the message */
-  font-weight: bold;
-  padding: 10px; /* Add padding for better spacing */
-  border: 2px solid #007bff; /* Blue border for the message box */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #e9f7fe; /* Light blue background */
-}
-
-/* Career Grid Styles */
-.images-container {
-  display: grid;                            /* Use grid layout */
-  grid-template-columns: repeat(2, auto);  /* Create two columns with automatic width */
-  gap: 200px;                                /* Space between grid items */
-  margin: 20px auto;                        /* Center the container */
-  max-width: 1200px;                        /* Limit the maximum width of the container */
-}
-
-/* Career Option Styles */
-.career-option {
-  text-align: center;                       /* Center text for each career option */
-}
-
-/* Image Styles */
-.career-option img {
-  width: auto;                              /* Use original width */
-  height: auto;                             /* Maintain aspect ratio */
-  max-width: 100%;                          /* Responsive but keep original size */
-  border-radius: 5px;                       /* Optional: add border radius */
-}
-
-/* Form Styles */
-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 2px solid #007bff; /* Blue border */
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #555;
-}
-
-input {
-  width: 100%;
-  padding: 4px; /* Reduced padding */
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px; /* Reduced font size */
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #8328a7;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #6b2389; /* Darker purple on hover */
-}
-/* General app container */
+/* App Container */
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9; /* subtle gray background */
+  /* Padding top is handled by content spacing, removed fixed padding-top to allow centering */
+  padding: 20px;
 }
 
-/* Auth Card (Login / Signup) */
+/* Main Content Wrapper - Pushes Footer Down */
+.main-content {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Center content vertically by default (good for login) */
+}
+
+/* 
+   GLASSMORPHISM CARD STYLE
+   Used for Auth Card, Career Options, Welcome Banner 
+*/
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  color: white;
+}
+
+/* --- LOGIN / SIGNUP --- */
+
 .auth-card {
-  background-color: #ffffff;
-  padding: 30px 25px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  width: 360px;
+  /* Inherit glass properties manually or use class if we could change HTML. 
+     Since we can't easily change HTML classnames everywhere without multiple file edits, 
+     I'll apply the styles directly to .auth-card */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
   text-align: center;
+  margin: auto;
+  /* Center in flex container */
+  transition: transform 0.3s ease;
 }
 
-/* Headings */
+.auth-card:hover {
+  transform: translateY(-5px);
+}
+
 .auth-card h3 {
-  margin-bottom: 20px;
-  color: #333333;
-  font-weight: 600;
-}
-
-/* Inputs */
-.auth-card input, .auth-card select {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0 20px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  background-color: #fff;
-}
-
-.auth-card input:focus, .auth-card select:focus {
-  border-color: #0073bb;
-  outline: none;
-}
-
-/* Primary buttons */
-.auth-card button {
-  width: 100%;
-  padding: 12px;
-  background-color: #0073bb;
+  margin-bottom: 30px;
   color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background 0.3s;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-.auth-card button:hover {
-  background-color: #005fa3;
-}
-
-/* Toggle button */
-.toggle-btn {
-  background: none;
-  border: none;
-  color: #0073bb;
-  cursor: pointer;
-  margin-top: 15px;
-  font-size: 14px;
-  text-decoration: underline;
-}
-
-/* Error messages */
-.auth-card p {
-  color: #d32f2f;
-  font-size: 13px;
-  margin-bottom: 0;
-}
-
-/* Career grid */
-.career-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-  margin-top: 30px;
-}
-
-/* CareerOption card */
-.career-grid > div {
-  background-color: #fff;
-  border-radius: 6px;
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: box-shadow 0.3s, transform 0.3s;
-  cursor: pointer;
-}
-
-.career-grid > div:hover {
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  transform: translateY(-3px);
-}
-
-/* Images inside cards */
-.career-grid img {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 10px;
-}
 /* Inputs */
+.auth-card label {
+  text-align: left;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #ddd;
+  margin-left: 5px;
+}
+
 .auth-card input,
 .auth-card select {
   width: 100%;
-  padding: 6px 10px;        /* smaller vertical padding */
-  margin: 8px 0 12px;       /* less margin between inputs */
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  background-color: #fff;
-  box-sizing: border-box;   /* ensure width includes padding */
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #fff !important;
+  /* Force white text */
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Fix for dropdown visibility */
+.auth-card select option {
+  background-color: #24243e;
+  /* Dark background to match theme */
+  color: #fff;
 }
 
 .auth-card input:focus,
 .auth-card select:focus {
-  border-color: #0073bb;
-  outline: none;
-  box-shadow: 0 0 3px rgba(0, 115, 187, 0.3);
+  border-color: #f72585;
+  /* Neon Pink border on focus */
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0 15px rgba(247, 37, 133, 0.3);
 }
-/* Career grid container */
+
+/* Primary Button */
+.auth-card button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(90deg, #f72585, #7209b7);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 10px;
+}
+
+.auth-card button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(114, 9, 183, 0.4);
+}
+
+/* Toggle Link */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #4cc9f0;
+  /* Cyan */
+  cursor: pointer;
+  margin-top: 25px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.toggle-btn:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* Error/Success Messages */
+.auth-card p {
+  background: rgba(255, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  margin-top: 10px;
+}
+
+/* SEARCH */
+.search-container {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(76, 201, 240, 0.3);
+  border-color: #4cc9f0;
+}
+
+
+/* --- HOME / CAREER GRID --- */
+
+.welcome-banner {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  margin: 20px auto 40px;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  animation: fadeIn 1s ease;
+  flex-wrap: wrap;
+  /* Allow wrapping on small screens */
+  gap: 15px;
+}
+
+.welcome-banner h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  background: -webkit-linear-gradient(#eee, #fff);
+  background-clip: text;
+  /* Standard property */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid #ff4d4f;
+  color: #ff4d4f;
+  padding: 8px 20px;
+  border-radius: 30px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.logout-btn:hover {
+  background: #ff4d4f;
+  color: white;
+}
+
+/* Career Grid */
 .career-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* responsive */
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
   width: 100%;
   max-width: 1200px;
-  margin: 30px auto;
+  padding: 10px;
+  justify-items: center;
+  animation: slideUp 0.8s ease-out;
 }
 
-/* Career option card */
-.career-grid > div {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 15px 10px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
+/* Career Option Card (Targeting what's rendered by CareerOption.js) */
+.career-option {
+  /* Reset default divs */
   display: flex;
   flex-direction: column;
+  position: relative;
+  /* For absolute positioning of heart */
+}
+
+/* FAVORITE ICON */
+.favorite-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
 }
 
-/* Hover effect */
-.career-grid > div:hover {
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  transform: translateY(-3px);
+/* --- DETAIL PAGE STYLES --- */
+.details-container {
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px;
+  margin: 20px auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.8s ease;
+  color: #eee;
 }
 
-/* Images inside the card */
-.career-grid img {
-  width: 80px;      /* uniform size */
-  height: 80px;
-  object-fit: contain;
+.details-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.details-header h1 {
+  font-size: 3rem;
+  background: linear-gradient(to right, #4cc9f0, #f72585);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
 }
 
-/* Career name text */
-.career-grid div span {
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-  text-align: center;
-}
-/* Career grid container for 2 per row */
-.career-grid {
+/* Stats Section */
+.stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* exactly 2 per row */
-  gap: 30px;
-  width: 90%;
-  max-width: 600px; /* keeps it centered and neat */
-  margin: 40px auto; /* center horizontally */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
 }
 
-/* Career option card */
-.career-grid > div {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 15px 10px;
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s;
 }
 
-/* Hover effect */
-.career-grid > div:hover {
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  transform: translateY(-3px);
+.stat-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Image inside card */
-.career-grid img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 10px;
-}
-
-/* Career name */
-.career-grid div span {
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
-}
-/* Remove default body margin and padding */
-body {
+.stat-card h3 {
+  color: #4cc9f0;
+  font-size: 2rem;
   margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9; /* light neutral background */
 }
 
-/* Career grid container */
-.career-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 images per row */
-  gap: 20px; /* spacing between cards */
-  width: 100%;
-  max-width: 500px; /* keeps grid compact */
-  margin: 20px auto; /* center horizontally with minimal top space */
-  padding: 0;
+.stat-card p {
+  color: #aaa;
+  margin: 5px 0 0;
 }
 
-/* Career option card */
-.career-grid > div {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 15px 10px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+/* Roadmap Timeline */
+.roadmap-container {
+  margin: 40px 0;
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.roadmap-step {
+  margin-bottom: 30px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.roadmap-step::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  /* Adjust based on border width */
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: #f72585;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #f72585;
+}
+
+.roadmap-step h4 {
+  color: #f72585;
+  margin: 0 0 5px;
+  font-size: 1.2rem;
+}
+
+/* FAQ / Accordion */
+.faq-item {
+  background: rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 15px;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.3s;
+}
+
+.faq-question:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.faq-answer {
+  padding: 15px;
+  color: #ccc;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  line-height: 1.6;
+}
+
+
+
+/* Create the card look on the link or internal container */
+.career-option .career-link {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+
+  padding: 30px;
+  width: 180px;
+  height: 180px;
+
+  text-decoration: none;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Hover effect */
-.career-grid > div:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-3px);
+.career-option .career-link:hover {
+  transform: translateY(-10px) scale(1.03);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Image inside card */
-.career-grid img {
-  width: 80px; /* uniform size */
+.career-option img {
+  width: 80px;
   height: 80px;
   object-fit: contain;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s;
 }
 
-/* Career name text */
-.career-grid div span {
-  font-size: 14px;
+.career-option .career-link:hover img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.career-option h3 {
+  margin: 0;
+  font-size: 1.1rem;
   font-weight: 500;
-  color: #333;
+  letter-spacing: 0.5px;
 }
 
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #2a2a3e inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
+/* Footer override */
+footer {
+  background: transparent !important;
+  /* Make transparent to show gradient */
+  color: rgba(255, 255, 255, 0.6) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}

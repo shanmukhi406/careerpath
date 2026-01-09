@@ -1,54 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const CSSDetails = () => {
-  return (
-    <div style={{ padding: '20px' }}>
-      <h2>CSS (Cascading Style Sheets)</h2>
-      <p>
-        CSS is a stylesheet language used to describe the presentation of a document written in HTML. It controls the layout and design of web pages, making it an essential skill for web developers.
-      </p>
-      <h2>Why Choose CSS as a Career Option?</h2>
-      <h3>Design and Aesthetics:</h3>
-      <p>
-        CSS enables developers to create visually appealing websites. Understanding CSS is crucial for anyone interested in web design.
-      </p>
-      <h3>Responsive Design:</h3>
-      <p>
-        With CSS, developers can create responsive designs that work on various devices, ensuring a seamless user experience across platforms.
-      </p>
-      <h3>Integration with Other Technologies:</h3>
-      <p>
-        CSS works hand-in-hand with HTML and JavaScript, allowing developers to create dynamic, interactive, and visually attractive websites.
-      </p>
-      <h3>Career Opportunities:</h3>
-      <p>
-        CSS knowledge is essential for front-end developers and web designers, leading to numerous job opportunities in the tech industry.
-      </p>
+  const [expandedFaq, setExpandedFaq] = useState(null);
 
-      <div>
-        <h2>Best YouTube Channels for Learning CSS</h2>
-        <ul>
-          <li>
-            <a href="https://www.youtube.com/c/TraversyMedia" target="_blank" rel="noopener noreferrer">Traversy Media</a>: Comprehensive tutorials on CSS and web development.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/freeCodeCamp" target="_blank" rel="noopener noreferrer">freeCodeCamp.org</a>: Full courses and tutorials covering CSS fundamentals.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/TheNetNinja" target="_blank" rel="noopener noreferrer">The Net Ninja</a>: Tutorials on CSS and related web technologies.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/user/Codecourse" target="_blank" rel="noopener noreferrer">Codecourse</a>: Practical lessons on CSS and styling techniques.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/user/derekbanas" target="_blank" rel="noopener noreferrer">Derek Banas</a>: Quick and efficient tutorials covering CSS concepts.
-          </li>
-        </ul>
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
+  return (
+    <div className="details-container">
+      <div className="details-header">
+        <h1>CSS Career Path</h1>
+        <p>Style the web. Make it beautiful and responsive.</p>
       </div>
+
+      {/* Quick Stats */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>Required</h3>
+          <p>For Frontend</p>
+        </div>
+        <div className="stat-card">
+          <h3>Creative</h3>
+          <p>Focus</p>
+        </div>
+        <div className="stat-card">
+          <h3>Visual</h3>
+          <p>Impact</p>
+        </div>
+      </div>
+
+      <h2>Learning Roadmap</h2>
+      <div className="roadmap-container">
+        <div className="roadmap-step">
+          <h4>Phase 1: Basics</h4>
+          <p>Selectors, Colors, Fonts, Box Model (Margin/Padding), Borders.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 2: Layouts</h4>
+          <p>Flexbox, Grid System, Positioning, Responsive Design (Media Queries).</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 3: Advanced CSS</h4>
+          <p>Animations (Keyframes), Transitions, Variables, Frameworks (Tailwind, Bootstrap), Preprocessors (SASS).</p>
+        </div>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div className="faq-section">
+        {[
+          { q: "Can I get a job with just HTML/CSS?", a: "It's difficult. Most roles require JavaScript, but you can find work converting designs to code." },
+          { q: "Why is CSS so hard?", a: "CSS can be tricky because of global scope and specificity rules. Modern tools like Flexbox make it easier." },
+          { q: "Should I learn Bootstrap first?", a: "No. Learn raw CSS first so you understand how frameworks work under the hood." }
+        ].map((item, index) => (
+          <div className="faq-item" key={index} onClick={() => toggleFaq(index)}>
+            <div className="faq-question">
+              {item.q}
+              <span>{expandedFaq === index ? '−' : '+'}</span>
+            </div>
+            {expandedFaq === index && <div className="faq-answer">{item.a}</div>}
+          </div>
+        ))}
+      </div>
+
+      <h2>Top Resources</h2>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        <li><a href="https://css-tricks.com/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>✨ CSS-Tricks</a></li>
+        <li><a href="https://flexboxfroggy.com/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>🐸 Flexbox Froggy (Game)</a></li>
+      </ul>
     </div>
   );
 };

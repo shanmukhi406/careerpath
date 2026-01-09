@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Signup = ({ onSignup }) => {
+const Signup = ({ onSignup, users = [] }) => {
   const [username, setUsername] = useState('');
   const [interest, setInterest] = useState('');
   const [error, setError] = useState('');
@@ -20,6 +20,12 @@ const Signup = ({ onSignup }) => {
 
     if (!allowedInterests.includes(interest)) {
       setError("Please select a valid interest");
+      return;
+    }
+
+    // Check for duplicate username
+    if (users.some(u => u.username === username)) {
+      setError("Username already exists. Please choose another.");
       return;
     }
 

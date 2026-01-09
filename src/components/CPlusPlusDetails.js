@@ -1,69 +1,76 @@
-// src/components/CPlusPlusDetails.js
-
-import React from 'react';
+import React, { useState } from 'react';
 
 const CPlusPlusDetails = () => {
+  const [expandedFaq, setExpandedFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>C Programming Language</h2>
-      <p>Choosing C as a career option can be a rewarding decision for various reasons. Here are some key points that highlight why C is a popular choice for many developers, along with the frameworks commonly associated with it:</p>
-      <h2>Why Choose C as a Career Option?</h2>
-      <h3>Foundation of Programming:</h3>
-      <p>C is often referred to as the "mother of all programming languages." Understanding C provides a solid foundation for learning other programming languages.</p>
-      <h3>Performance:</h3>
-      <p>C is known for its efficiency and performance, making it suitable for system-level programming, embedded systems, and real-time applications.</p>
-      <h3>Wide Applicability:</h3>
-      <p>C is widely used in various domains, including operating systems, embedded systems, and application development, which translates into numerous job opportunities.</p>
-      <h3>Strong Community Support:</h3>
-      <p>The C community is large and active, providing ample resources, libraries, and frameworks, making it easier to learn and troubleshoot.</p>
-      <div>
-        <h2>Best YouTube Channels for Learning C</h2>
-        <ul>
-          <li>
-            <a href="https://www.youtube.com/user/mycodeschool" target="_blank">mycodeschool</a>: Comprehensive C tutorials covering basic to advanced concepts with practical examples.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/user/ProgrammingKnowledge" target="_blank">ProgrammingKnowledge</a>: Beginner-friendly C tutorials focusing on programming fundamentals and practical applications.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/TheCherno" target="_blank">The Cherno</a>: Tutorials on C programming with a focus on game development and hands-on projects.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/Freecodecamp" target="_blank">freeCodeCamp.org</a>: Full course videos, including C programming and data structures.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/HackerRank" target="_blank">HackerRank</a>: Challenges and tutorials for improving C programming skills through hands-on practice.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/user/derekbanas" target="_blank">Derek Banas</a>: Quick and efficient tutorials that cover various programming languages, including C.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/user/CProgramming" target="_blank">C Programming</a>: A dedicated channel for C programming tutorials covering fundamental concepts and advanced topics.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/TheNetNinja" target="_blank">The Net Ninja</a>: Tutorials on web development and programming basics, along with various frameworks and tools.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/user/Simplilearn" target="_blank">Simplilearn</a>: Comprehensive courses and tutorials covering C fundamentals and advanced topics.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/CSDojo" target="_blank">CS Dojo</a>: Valuable insights into programming concepts and career tips relevant to C developers.
-          </li>
-        </ul>
+    <div className="details-container">
+      <div className="details-header">
+        <h1>C++ Career Path</h1>
+        <p>Unleash high-performance computing and game development.</p>
       </div>
+
+      {/* Quick Stats */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>$108k+</h3>
+          <p>Avg. Salary</p>
+        </div>
+        <div className="stat-card">
+          <h3>Critical</h3>
+          <p>Systems Prog</p>
+        </div>
+        <div className="stat-card">
+          <h3>Fast</h3>
+          <p>Performance</p>
+        </div>
+      </div>
+
+      <h2>Learning Roadmap</h2>
+      <div className="roadmap-container">
+        <div className="roadmap-step">
+          <h4>Phase 1: Core C++</h4>
+          <p>Syntax, Pointers, Memory Management, Functions, Arrays.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 2: OOP & STL</h4>
+          <p>Classes, Inheritance, Polymorphism, Standard Template Library (Vectors, Maps).</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 3: Advanced System Design</h4>
+          <p>Multithreading, Smart Pointers, Network Programming, Game Engines (Unreal).</p>
+        </div>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div className="faq-section">
+        {[
+          { q: "Why is C++ still used?", a: "It offers unparalleled control over hardware and memory, crucial for games, OS, and high-frequency trading." },
+          { q: "Is C++ harder than Python?", a: "Yes, manual memory management and complex syntax make it steeper to learn, but very rewarding." },
+          { q: "Where is C++ used?", a: "Game Development (Unreal Engine), Operating Systems (Windows, Linux), and Fintech." }
+        ].map((item, index) => (
+          <div className="faq-item" key={index} onClick={() => toggleFaq(index)}>
+            <div className="faq-question">
+              {item.q}
+              <span>{expandedFaq === index ? '−' : '+'}</span>
+            </div>
+            {expandedFaq === index && <div className="faq-answer">{item.a}</div>}
+          </div>
+        ))}
+      </div>
+
+      <h2>Top Resources</h2>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        <li><a href="https://isocpp.org/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>🌐 ISO C++ Standard</a></li>
+        <li><a href="https://www.learncpp.com/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>📘 LearnCpp.com</a></li>
+        <li><a href="https://www.geeksforgeeks.org/c-plus-plus/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>🤓 GeeksforGeeks C++</a></li>
+      </ul>
     </div>
   );
 };
-
-
 
 export default CPlusPlusDetails;

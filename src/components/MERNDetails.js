@@ -1,65 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const MERNDetails = () => {
+const MernDetails = () => {
+  const [expandedFaq, setExpandedFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>MERN Stack</h2>
-      <p>Choosing the MERN stack as a career option can be an exciting choice for various reasons. Here are some key points that highlight why MERN is a popular choice for many developers, along with the frameworks and tools commonly associated with it:</p>
-      <h2>Why Choose MERN as a Career Option?</h2>
-      <h3>Full-Stack Development:</h3>
-      <p>The MERN stack allows developers to work on both the client and server sides of an application, providing a comprehensive understanding of full-stack development.</p>
-      <h3>JavaScript-Based Stack:</h3>
-      <p>Being a JavaScript-based stack, MERN enables developers to use a single language across the entire application, making development more streamlined and efficient.</p>
-      <h3>High Demand in Job Market:</h3>
-      <p>With the growing popularity of web applications, companies increasingly seek developers proficient in the MERN stack, leading to high demand for these skills in the job market.</p>
-      <h3>Active Community and Resources:</h3>
-      <p>The MERN stack has a robust community that provides ample resources, libraries, and tools, making it easier for developers to learn and troubleshoot issues.</p>
-      <div>
-        <h2>Best YouTube Channels for Learning MERN Stack</h2>
-        <ul>
-          <li>
-            <a href="https://www.youtube.com/c/TraversyMedia" target="_blank">Traversy Media</a>: Offers comprehensive tutorials on full-stack development, including MERN stack projects and concepts.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/Academind" target="_blank">Academind</a>: Provides in-depth tutorials on modern web development, including MERN stack frameworks and techniques.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/Freecodecamp" target="_blank">freeCodeCamp.org</a>: Features full courses on web development and MERN stack, covering project-based learning and core concepts.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/CodeAcademy" target="_blank">CodeAcademy</a>: Focuses on core MERN stack concepts and practical applications with hands-on projects.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/TechWithTim" target="_blank">Tech With Tim</a>: Covers various programming topics, including MERN stack projects and tutorials.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/thenetninja" target="_blank">The Net Ninja</a>: Provides tutorials on web development, including MERN stack, and various frameworks and tools.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/DevEd" target="_blank">Dev Ed</a>: Tutorials on web development and MERN stack concepts with a focus on creativity and design.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/Simplilearn" target="_blank">Simplilearn</a>: Offers comprehensive courses on MERN stack, covering everything from basics to advanced topics.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/DavidBombal" target="_blank">David Bombal</a>: Covers various technology topics, including MERN stack and practical application development.
-          </li>
-          <br />
-          <li>
-            <a href="https://www.youtube.com/c/ProgrammingwithMosh" target="_blank">Programming with Mosh</a>: Provides tutorials on full-stack development, including MERN stack projects.
-          </li>
-        </ul>
+    <div className="details-container">
+      <div className="details-header">
+        <h1>MERN Stack Career Path</h1>
+        <p>MongoDB, Express, React, Node.js - The modern full stack.</p>
       </div>
+
+      {/* Quick Stats */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>$120k+</h3>
+          <p>Avg. Salary</p>
+        </div>
+        <div className="stat-card">
+          <h3>Full</h3>
+          <p>JS Stack</p>
+        </div>
+        <div className="stat-card">
+          <h3>High</h3>
+          <p>Startup Demand</p>
+        </div>
+      </div>
+
+      <h2>Learning Roadmap</h2>
+      <div className="roadmap-container">
+        <div className="roadmap-step">
+          <h4>Phase 1: Frontend (React)</h4>
+          <p>React components, Hooks, State Management (Redux/Context), Routing.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 2: Backend (Node/Express)</h4>
+          <p>REST APIs, Middleware, Authentication (JWT), File Uploads.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 3: Database (MongoDB)</h4>
+          <p>NoSQL design, Mongoose schemas, Aggregations.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 4: Deployment</h4>
+          <p>Heroku/Vercel/Netlify, CI/CD, Docker basics.</p>
+        </div>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div className="faq-section">
+        {[
+          { q: "Why is MERN so popular?", a: "It allows developers to use JavaScript for both frontend and backend, unifying development." },
+          { q: "Is MERN better than MEAN?", a: "React (MERN) is currently more popular than Angular (MEAN), but both are powerful." },
+          { q: "Can I freelance with MERN?", a: "Absolutely. MERN is perfect for building complete web applications for clients." }
+        ].map((item, index) => (
+          <div className="faq-item" key={index} onClick={() => toggleFaq(index)}>
+            <div className="faq-question">
+              {item.q}
+              <span>{expandedFaq === index ? '−' : '+'}</span>
+            </div>
+            {expandedFaq === index && <div className="faq-answer">{item.a}</div>}
+          </div>
+        ))}
+      </div>
+
+      <h2>Top Resources</h2>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        <li><a href="https://www.mongodb.com/mern-stack" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>🍃 MongoDB MERN Guide</a></li>
+        <li><a href="https://reactjs.org/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>⚛️ React Docs</a></li>
+      </ul>
     </div>
   );
 };
 
-export default MERNDetails;
+export default MernDetails;

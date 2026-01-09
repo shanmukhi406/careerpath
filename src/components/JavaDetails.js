@@ -1,68 +1,75 @@
-// src/components/JavaDetails.js
-
-import React from 'react';
+import React, { useState } from 'react';
 
 const JavaDetails = () => {
+  const [activeTab, setActiveTab] = useState('roadmap');
+  const [expandedFaq, setExpandedFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Java Programming Language</h2>
-      <p>Choosing Java as a career option can be a rewarding decision for various reasons. Here are some key points that highlight why Java is a popular choice for many developers, along with the frameworks commonly associated with it:</p>
-      <h2>Why Choose Java as a Career Option?</h2>
-      <h3>Widespread Adoption:</h3>
-      <p>Java is one of the most popular programming languages worldwide. Many large enterprises rely on Java for building their applications, which translates into a high demand for Java developers.</p>
-      <h3>Platform Independence:</h3>
-      <p>The "write once, run anywhere" (WORA) capability allows Java applications to run on any device with a Java Virtual Machine (JVM), making it a versatile choice for various platforms.</p>
-      <h3>Strong Community Support:</h3>
-      <p>Java has a large and active community of developers. This means ample resources, forums, libraries, and frameworks are available, making it easier to learn and troubleshoot.</p>
-      <h3>Career Opportunities:</h3>
-      <p>Java developers can work in various fields, including web development, mobile app development (especially Android), enterprise applications, and backend systems. The demand for Java developers in
-        finance, e-commerce, and healthcare sectors remains high.</p>
-      <div>
-        <h2>Best YouTube Channels for Learning Java</h2>
-        <ul>
-          <li>
-            <a href="https://www.youtube.com/user/javaboynavin" target="_blank">Telusko</a>: Comprehensive Java tutorials, practical projects, and explanations of core concepts.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/user/koushks" target="_blank">Java Brains</a>: In-depth tutorials covering Java basics, Spring Framework, and best practices in web development.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/user/programmingwithmosh" target="_blank">Programming with Mosh</a>: Beginner to advanced Java tutorials, programming concepts, and project-based learning.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/Freecodecamp" target="_blank">freeCodeCamp.org</a>: Full course videos, including Java programming, data structures, algorithms, and software development.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/user/derekbanas" target="_blank">Derek Banas</a>: Quick and efficient tutorials that cover various programming languages, including Java.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg" target="_blank">CodeAcademy</a>: Tutorials focusing on core Java concepts and applications, including practical examples and coding challenges.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/TheNetNinja" target="_blank">The Net Ninja</a>: Tutorials on web development and Java basics, along with various frameworks and tools.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/user/Simplilearn" target="_blank">Simplilearn</a>: Comprehensive courses and tutorials covering Java fundamentals, advanced topics, and certification preparation.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/user/javacodegeeks" target="_blank">Java Code Geeks</a>: Tutorials, articles, and videos covering Java programming, best practices, and software development trends.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/CSDojo" target="_blank">CS Dojo</a>: Valuable insights into programming concepts and career tips relevant to Java developers.
-          </li>
-        </ul>
+    <div className="details-container">
+      <div className="details-header">
+        <h1>Java Career Path</h1>
+        <p>Master the language that powers the enterprise world.</p>
       </div>
 
+      {/* Quick Stats */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>$105k+</h3>
+          <p>Avg. Salary</p>
+        </div>
+        <div className="stat-card">
+          <h3>300k+</h3>
+          <p>Job Openings</p>
+        </div>
+        <div className="stat-card">
+          <h3>High</h3>
+          <p>Demand</p>
+        </div>
+      </div>
 
+      <h2>Learning Roadmap</h2>
+      <div className="roadmap-container">
+        <div className="roadmap-step">
+          <h4>Phase 1: The Foundation</h4>
+          <p>Syntax, Loops, OOPs Concepts (Polymorphism, Inheritance), Collections Framework.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 2: Advanced Java</h4>
+          <p>Multithreading, Streams API, JDBC, File Handling, Maven/Gradle.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 3: Frameworks</h4>
+          <p>Spring Boot, Hibernate, Microservices Architecture, RESTful APIs.</p>
+        </div>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div className="faq-section">
+        {[
+          { q: "Is Java hard to learn?", a: "Java has a steep learning curve compared to Python but is very structured, making it great for understanding core CS concepts." },
+          { q: "What is Java used for?", a: "Enterprise web apps, Android apps (native), Big Data (Hadoop), and banking systems." },
+          { q: "Do I need math for Java?", a: "Basic logic is required. You don't need advanced calculus unless you are doing specific data science work." }
+        ].map((item, index) => (
+          <div className="faq-item" key={index} onClick={() => toggleFaq(index)}>
+            <div className="faq-question">
+              {item.q}
+              <span>{expandedFaq === index ? '−' : '+'}</span>
+            </div>
+            {expandedFaq === index && <div className="faq-answer">{item.a}</div>}
+          </div>
+        ))}
+      </div>
+
+      <h2>Top Resources</h2>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        <li><a href="https://www.youtube.com/user/javaboynavin" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>▶ Telusko - Java for Beginners</a></li>
+        <li><a href="https://docs.oracle.com/en/java/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>📖 Oracle Official Docs</a></li>
+        <li><a href="https://spring.io/guides" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>🌱 Spring Boot Guides</a></li>
+      </ul>
     </div>
   );
 };

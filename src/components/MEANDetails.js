@@ -1,57 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const MEANDetails = () => {
+const MeanDetails = () => {
+  const [expandedFaq, setExpandedFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>MEAN Stack</h2>
-      <p>
-        The MEAN stack is a powerful collection of technologies used for building dynamic web applications. 
-        It consists of MongoDB, Express.js, Angular, and Node.js, and is known for its full-stack JavaScript development capabilities.
-      </p>
-      <h2>Why Choose MEAN as a Career Option?</h2>
-      <h3>Full-Stack Development:</h3>
-      <p>
-        The MEAN stack allows developers to work on both the front-end and back-end of applications using a single language, JavaScript.
-      </p>
-      <h3>Rapid Development:</h3>
-      <p>
-        With frameworks like Angular and Express.js, developers can quickly prototype and build applications, significantly reducing development time.
-      </p>
-      <h3>Growing Demand:</h3>
-      <p>
-        As businesses increasingly move online, the demand for skilled MEAN developers continues to rise in various industries.
-      </p>
-      <h3>Community Support:</h3>
-      <p>
-        Each component of the MEAN stack has a robust community, providing extensive resources, tools, and support for developers.
-      </p>
-      
-      <div>
-        <h2>Best YouTube Channels for Learning MEAN</h2>
-        <ul>
-          <li>
-            <a href="https://www.youtube.com/c/Academind" target="_blank" rel="noopener noreferrer">Academind</a>: In-depth tutorials on MEAN stack and full-stack development.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/TraversyMedia" target="_blank" rel="noopener noreferrer">Traversy Media</a>: Practical projects and tutorials covering the MEAN stack.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/ProgrammingwithMosh" target="_blank" rel="noopener noreferrer">Programming with Mosh</a>: Comprehensive courses on Angular and Node.js.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/Freecodecamp" target="_blank" rel="noopener noreferrer">freeCodeCamp.org</a>: Full courses on web development, including MEAN stack tutorials.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/TheNetNinja" target="_blank" rel="noopener noreferrer">The Net Ninja</a>: Tutorials covering various technologies, including MEAN stack components.
-          </li>
-        </ul>
+    <div className="details-container">
+      <div className="details-header">
+        <h1>MEAN Stack Career Path</h1>
+        <p>MongoDB, Express, Angular, Node.js - Enterprise grade full stack.</p>
       </div>
+
+      {/* Quick Stats */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>$115k+</h3>
+          <p>Avg. Salary</p>
+        </div>
+        <div className="stat-card">
+          <h3>Robust</h3>
+          <p>Framework</p>
+        </div>
+        <div className="stat-card">
+          <h3>Corp</h3>
+          <p>Preferred</p>
+        </div>
+      </div>
+
+      <h2>Learning Roadmap</h2>
+      <div className="roadmap-container">
+        <div className="roadmap-step">
+          <h4>Phase 1: Frontend (Angular)</h4>
+          <p>Components, TypeScript, Dependency Injection, RxJS, Routing.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 2: Backend (Node/Express)</h4>
+          <p>API development, Middleware, Server-side logic.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 3: Database (MongoDB)</h4>
+          <p>Data modeling, NoSQL queries, Performance optimization.</p>
+        </div>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div className="faq-section">
+        {[
+          { q: "Is Angular hard to learn?", a: "Angular has a steeper learning curve than React due to its comprehensive nature and TypeScript requirement." },
+          { q: "Who uses MEAN?", a: "Many large enterprises and banks prefer Angular for its structure and strict typing." },
+          { q: "Should I learn TypeScript first?", a: "Yes, TypeScript is essential for modern Angular development." }
+        ].map((item, index) => (
+          <div className="faq-item" key={index} onClick={() => toggleFaq(index)}>
+            <div className="faq-question">
+              {item.q}
+              <span>{expandedFaq === index ? '−' : '+'}</span>
+            </div>
+            {expandedFaq === index && <div className="faq-answer">{item.a}</div>}
+          </div>
+        ))}
+      </div>
+
+      <h2>Top Resources</h2>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        <li><a href="https://angular.io/docs" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>🅰️ Angular Docs</a></li>
+        <li><a href="https://www.typescriptlang.org/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>📘 TypeScript Lang</a></li>
+      </ul>
     </div>
   );
 };
 
-export default MEANDetails;
+export default MeanDetails;

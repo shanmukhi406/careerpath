@@ -1,54 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const HTMLDetails = () => {
-  return (
-    <div style={{ padding: '20px' }}>
-      <h2>HTML (HyperText Markup Language)</h2>
-      <p>
-        HTML is the standard markup language used for creating web pages. It provides the structure for web content and is an essential skill for web developers.
-      </p>
-      <h2>Why Choose HTML as a Career Option?</h2>
-      <h3>Fundamental Skill:</h3>
-      <p>
-        HTML is the backbone of web development. Every web developer needs to understand HTML to create websites and applications.
-      </p>
-      <h3>Job Opportunities:</h3>
-      <p>
-        Knowledge of HTML is often a prerequisite for many job roles, including front-end developers, web designers, and full-stack developers.
-      </p>
-      <h3>Compatibility:</h3>
-      <p>
-        HTML works seamlessly with other web technologies like CSS and JavaScript, allowing developers to create dynamic and interactive websites.
-      </p>
-      <h3>Easy to Learn:</h3>
-      <p>
-        HTML has a straightforward syntax, making it accessible for beginners and a great starting point for those new to web development.
-      </p>
+  const [expandedFaq, setExpandedFaq] = useState(null);
 
-      <div>
-        <h2>Best YouTube Channels for Learning HTML</h2>
-        <ul>
-          <li>
-            <a href="https://www.youtube.com/c/TraversyMedia" target="_blank" rel="noopener noreferrer">Traversy Media</a>: Great tutorials on HTML and web development fundamentals.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/Freecodecamp" target="_blank" rel="noopener noreferrer">freeCodeCamp.org</a>: Comprehensive HTML courses and tutorials.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/c/TheNetNinja" target="_blank" rel="noopener noreferrer">The Net Ninja</a>: Tutorials covering HTML and related web technologies.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/user/Codecourse" target="_blank" rel="noopener noreferrer">Codecourse</a>: Practical lessons on HTML and web development projects.
-          </li>
-          <br/>
-          <li>
-            <a href="https://www.youtube.com/user/derekbanas" target="_blank" rel="noopener noreferrer">Derek Banas</a>: Quick tutorials covering HTML basics and more advanced topics.
-          </li>
-        </ul>
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
+  return (
+    <div className="details-container">
+      <div className="details-header">
+        <h1>HTML Career Path</h1>
+        <p>The skeleton of the web. Nothing exists online without it.</p>
       </div>
+
+      {/* Quick Stats */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>Essential</h3>
+          <p>For Web</p>
+        </div>
+        <div className="stat-card">
+          <h3>100%</h3>
+          <p>Adoption</p>
+        </div>
+        <div className="stat-card">
+          <h3>Easy</h3>
+          <p>To Learn</p>
+        </div>
+      </div>
+
+      <h2>Learning Roadmap</h2>
+      <div className="roadmap-container">
+        <div className="roadmap-step">
+          <h4>Phase 1: Structure</h4>
+          <p>Tags, Elements, Attributes, Lists, Tables, Forms.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 2: Modern HTML5</h4>
+          <p>Semantic Elements (header, nav, article), Audio/Video tags, Canvas.</p>
+        </div>
+        <div className="roadmap-step">
+          <h4>Phase 3: Best Practices</h4>
+          <p>SEO Basics, Accessibility (ARIA roles), Meta Tags, Performance Optimization.</p>
+        </div>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div className="faq-section">
+        {[
+          { q: "Is HTML a programming language?", a: "No, it is a markup language used to structure content on the web." },
+          { q: "Do I need to memorize all tags?", a: "No! Just learn the common ones (div, span, a, img, input). You can look up the rest." },
+          { q: "What comes after HTML?", a: "CSS (for styling) and JavaScript (for interactivity) are the immediate next steps." }
+        ].map((item, index) => (
+          <div className="faq-item" key={index} onClick={() => toggleFaq(index)}>
+            <div className="faq-question">
+              {item.q}
+              <span>{expandedFaq === index ? '−' : '+'}</span>
+            </div>
+            {expandedFaq === index && <div className="faq-answer">{item.a}</div>}
+          </div>
+        ))}
+      </div>
+
+      <h2>Top Resources</h2>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>🦊 MDN Web Docs (HTML)</a></li>
+        <li><a href="https://www.w3schools.com/html/" target='_blank' rel="noreferrer" style={{ color: '#4cc9f0', textDecoration: 'none' }}>🏫 W3Schools HTML Tutorial</a></li>
+      </ul>
     </div>
   );
 };
